@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escapada Romántica</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1>🤍 Escapada Romántica 🤍</h1>
+      <p>Para que la reina elija su próximo destino</p>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- PASO 1: Reglas -->
+    <section id="rules-section" class="section active">
+      <div class="card rules-card">
+        <h2>📋 Requisitos para el Viaje</h2>
+        <p class="subtitle">Antes de continuar, asegúrate de cumplir con:</p>
+        
+        <ul class="rules-list">
+          <li>
+            <div class="rule-icon"><i class="fas fa-sparkles"></i>✨</div>
+            <span>Ganas de pasear y explorar</span>
+          </li>
+          <li>
+            <div class="rule-icon">💖</div>
+            <span>Actitud positiva, ¡no amargada!</span>
+          </li>
+          <li>
+            <div class="rule-icon">😄</div>
+            <span>Disposición para divertirse (Y si, a divertirse y ya sabes a qué más)</span>
+          </li>
+          <li>
+            <div class="rule-icon">📵</div>
+            <span>Desconectarse del celular 24/7 (por favor y gracias)</span>
+          </li>
+          <li>
+            <div class="rule-icon">🎉</div>
+            <span>Crear recuerdos inolvidables conmigo</span>
+          </li>
+        </ul>
+
+        <button class="btn-primary" onclick="showSection('choose-section')">
+          Sí, acepto
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 2: Elegir categoría -->
+    <section id="choose-section" class="section">
+      <h2 class="section-title">¿Qué prefiere mi bella?</h2>
+      
+      <div class="category-grid">
+        <button class="category-card" onclick="selectCategory('playa')">
+          <div class="category-icon beach-icon"> 
+            <i class="fa-solid fa-umbrella-beach"></i>
+        </div>
+          <h3>Playa</h3>
+          <p>Sol, arena y mar</p>
+        </button>
+
+        <button class="category-card" onclick="selectCategory('montaña')">
+          <div class="category-icon mountain-icon">
+          <i class="fa-solid fa-mountain"></i>
+          </div>
+          <h3>Montaña</h3>
+          <p>Naturaleza y paz (Dependiendo con un poquito de frío)</p>
+        </button>
+      </div>
+
+      <button class="btn-back" onclick="showSection('rules-section')">
+        <i class="fas fa-chevron-left"></i> ← Volver
+      </button>
+    </section>
+
+    <!-- PASO 3: Resultados -->
+    <section id="results-section" class="section">
+      <h2 class="section-title" id="results-title">Destinos</h2>
+      <p class="subtitle">Desliza para ver más opciones guapa</p>
+
+      <div class="carousel-container">
+        <button class="carousel-btn prev-btn" onclick="prevCard()">‹</button>
+        
+        <div class="carousel-wrapper">
+          <div class="carousel" id="carousel"></div>
+        </div>
+
+        <button class="carousel-btn next-btn" onclick="nextCard()">›</button>
+      </div>
+
+      <!-- Indicadores -->
+      <div class="dots-container" id="dots-container"></div>
+
+      <button class="btn-back" onclick="showSection('choose-section')">
+        ← Cambiar destino
+      </button>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      
+      <div class="modal-gallery">
+        <img id="modal-image" src="" alt="Alojamiento">
+        <button class="gallery-btn gallery-prev" onclick="prevImage()">‹</button>
+        <button class="gallery-btn gallery-next" onclick="nextImage()">›</button>
+        <div class="gallery-dots" id="gallery-dots"></div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-header">
+          <h3 id="modal-title"></h3>
+        </div>
+        
+        <p class="modal-description" id="modal-description"></p>
+        
+        <div class="modal-info">
+          <p><span class="info-icon">📍</span> <span id="modal-location"></span></p>
+          <p><span class="info-icon">🕐</span> <span id="modal-time"></span></p>
+        </div>
+
+        <div class="modal-footer">
+          <p class="modal-description">Nota. Tener en cuenta que puede haber o no espacio, para los días que queremos. Aunque haciendo la búsqueda encontré el espacio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
